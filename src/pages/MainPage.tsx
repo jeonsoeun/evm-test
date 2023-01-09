@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components/macro";
-import Web3 from "web3";
 import Button from "../components/button/Button";
 import Page from "../components/page/Page";
 import { HorizontalCenterFlexBox } from "../components/styled/flex";
