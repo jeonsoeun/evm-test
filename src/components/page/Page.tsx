@@ -20,6 +20,7 @@ export const FullFillDiv = styled.div`
 export const MaxWidthDiv = styled.div`
   max-width: 1700px;
   margin: auto;
+  padding: 20px;
 `;
 
 export default Page;
