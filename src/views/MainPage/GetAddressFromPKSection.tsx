@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import Button from "../../components/button/Button";
 import { createAddress } from "../../service/createAddress";
 import { getAddressFromPrivateKey } from "../../service/getAddress";
-import { BasicInput } from "../../styles/Input";
+import { BasicInput, InputWrapper } from "../../styles/Input";
 import { Section } from "../../styles/Section";
 import { Title } from "../../styles/Title";
 
@@ -33,12 +33,5 @@ const GetAddressFromPKSection: React.FC = () => {
     </Section>
   );
 };
-
-const CreateAddressWrapper = styled.div`
-  margin-top: 10px;
-`;
-const InputWrapper = styled.div`
-  padding: 10px 10px 0px 10px;
-`;
 
 export default GetAddressFromPKSection;

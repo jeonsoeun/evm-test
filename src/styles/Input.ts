@@ -8,3 +8,7 @@ export const BasicInput = styled.input`
   font-size: 16px;
   border: 2px solid ${color.primary};
 `;
+
+export const InputWrapper = styled.div`
+  padding: 10px 10px 0px 10px;
+`;
