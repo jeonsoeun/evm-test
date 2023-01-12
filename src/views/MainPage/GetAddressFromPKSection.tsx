@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
-import styled from "styled-components/macro";
 import Button from "../../components/button/Button";
-import { createAddress } from "../../service/createAddress";
 import { getAddressFromPrivateKey } from "../../service/getAddress";
 import { BasicInput, InputWrapper } from "../../styles/Input";
 import { Section } from "../../styles/Section";
