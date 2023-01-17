@@ -8,11 +8,12 @@ import { Section } from "../../styles/Section";
 import { Title } from "../../styles/Title";
 
 const PrintCounterNumber: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>(contractAddress.counter);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  // const [inputValue, setInputValue] = useState<string>(contractAddress.counter);
   const [count, setCount] = useState<string>("");
   const onClickGetAddress = async () => {
-    if (inputValue) {
-      const count = await getCount(inputValue);
+    if (inputRef?.current?.value) {
+      const count = await getCount(inputRef?.current?.value);
       setCount(count);
     }
   };
@@ -20,7 +21,8 @@ const PrintCounterNumber: React.FC = () => {
     <Section>
       <Title>Counter 출력</Title>
       <InputWrapper>
-        Counter Contract: <BasicInput value={inputValue} />
+        Counter Contract:{" "}
+        <BasicInput ref={inputRef} defaultValue={contractAddress.counter} />
         <Button onClick={onClickGetAddress} fontSize="20px" padding="10px 20px">
           Get Count
         </Button>
