@@ -8,6 +8,7 @@ export interface IButtonStyleProps {
   styleWidth?: string;
   styleHeight?: string;
   padding?: string;
+  margin?: string;
   border?: string;
   borderRadious?: string;
   fontSize?: string;
@@ -21,6 +22,7 @@ export const buttonStyle = css<IButtonStyleProps>`
   height: ${(props) => props.styleHeight ?? "auto"};
   background: ${(props) => props.background ?? color.primary};
   padding: ${(props) => props.padding ?? "5px 10px"};
+  margin: ${(props) => props.margin ?? "0 5px 0 0"};
   border: ${(props) => props.border ?? "none"};
   border-radius: ${(props) => props.borderRadious ?? "10px"};
   color: ${(props) => props.textColor ?? "#fff"};
