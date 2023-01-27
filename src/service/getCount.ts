@@ -19,7 +19,8 @@ export async function addCount(contractAddress: string): Promise<boolean> {
   const contract = new web3.eth.Contract(abi, contractAddress);
   const gasPrice = (await getGasPrice()).fast * 10 ** 9;
   try {
-    const gasLimit = contract.methods.add().estimateGas();
+    const gasLimit = await contract.methods.add().estimateGas();
+    console.log("addCount", { gasLimit });
     const data = contract.methods.add().encodeABI();
     // 내가 한 방법은 결국 eth 전송한거랑 거의 똑같은 포멧인데?? -> 맞다
     const obj = {
@@ -55,7 +56,7 @@ export async function minusCount(contractAddress: string): Promise<boolean> {
   const contract = new web3.eth.Contract(abi, contractAddress);
   const gasPrice = (await getGasPrice()).fast * 10 ** 9;
   try {
-    const gasLimit = contract.methods.minus().estimateGas();
+    const gasLimit = await contract.methods.minus().estimateGas();
     const data = contract.methods.minus().encodeABI();
     const obj = {
       contractAddress,
@@ -85,8 +86,9 @@ export async function resetCount(contractAddress: string): Promise<boolean> {
   // ABI 타입 어떻게 하나.
   const contract = new web3.eth.Contract(abi, contractAddress);
   const gasPrice = (await getGasPrice()).fast * 10 ** 9;
+  const gasLimit = await contract.methods.reset().estimateGas();
+  console.log({ gasLimit });
   try {
-    const gasLimit = contract.methods.reset().estimateGas();
     const data = contract.methods.reset().encodeABI();
     const obj = {
       contractAddress,
