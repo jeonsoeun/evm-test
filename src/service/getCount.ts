@@ -39,6 +39,7 @@ export async function addCount(contractAddress: string): Promise<boolean> {
       const result = await web3.eth.sendSignedTransaction(
         signed.rawTransaction
       );
+      console.log({ result });
       return !!result.transactionHash;
     } else {
       return false;
@@ -86,8 +87,21 @@ export async function resetCount(contractAddress: string): Promise<boolean> {
   // ABI 타입 어떻게 하나.
   const contract = new web3.eth.Contract(abi, contractAddress);
   const gasPrice = (await getGasPrice()).fast * 10 ** 9;
-  const gasLimit = await contract.methods.reset().estimateGas();
-  console.log({ gasLimit });
+  let gasLimit;
+  try {
+    gasLimit = await contract.methods
+      .reset()
+      .estimateGas(
+        { from: "0x5Fa0f3c8De6c1E2Ee5eFA2D05ad271e467560F00" },
+        (error: any) => {
+          console.error(error);
+          throw error;
+        }
+      ); // estimate에는 사인을 하지 않으니까 sender가 누군지 모른다. 그래서 from을 넣어줘야함.
+    console.log({ gasLimit });
+  } catch (err) {
+    return false;
+  }
   try {
     const data = contract.methods.reset().encodeABI();
     const obj = {
