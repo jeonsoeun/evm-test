@@ -125,3 +125,5 @@ export async function resetCount(contractAddress: string): Promise<boolean> {
     return false;
   }
 }
+
+async function addWithParams(contractAddres: string, addAmount: number) {}
