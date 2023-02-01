@@ -11,6 +11,8 @@ export const contractAddress = {
 
 export const personalAddress = {
   my: "0x5Fa0f3c8De6c1E2Ee5eFA2D05ad271e467560F00",
+  my2: "0xcE609DD07D068dAB7718afB098B3D388FA5f115b",
+  kh: "",
 };
 
 export const PRIVATE_KEY =
