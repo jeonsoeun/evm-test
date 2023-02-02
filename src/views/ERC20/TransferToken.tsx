@@ -50,7 +50,9 @@ const TransferToken = () => {
         <InputWrapper>
           Amount: <BasicInput ref={amountRef} defaultValue={"0.01"} />
         </InputWrapper>
-        <Button onClick={transfer}>Transfer</Button>
+        <Button onClick={transfer} margin={"5px 0"}>
+          Transfer
+        </Button>
 
         <div>{isSuccess}</div>
       </Section>

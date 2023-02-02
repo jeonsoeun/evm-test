@@ -45,7 +45,9 @@ const GetERC20Data = () => {
         <InputWrapper>
           Countract:{" "}
           <BasicInput ref={inputRef} defaultValue={contractAddress.erc20PRN} />
-          <Button onClick={getErc20Data}>Execute Methods</Button>
+          <Button onClick={getErc20Data} margin={"0 0 0 5px"}>
+            Execute Methods
+          </Button>
         </InputWrapper>
         <div>
           name(): <span>{name}</span>
@@ -74,7 +76,9 @@ const GetERC20Data = () => {
           <BasicInput ref={addressRef} defaultValue={personalAddress.my} />
         </InputWrapper>
         <div>
-          <Button onClick={execBalanceOf}>Get Balance</Button>
+          <Button margin="5px 0" onClick={execBalanceOf}>
+            Get Balance
+          </Button>
         </div>
         <div>
           balanceOf(): <span>{balanceOf}</span>
