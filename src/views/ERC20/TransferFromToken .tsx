@@ -1,27 +1,30 @@
 import { useRef, useState } from "react";
 import Button from "../../components/button/Button";
 import { contractAddress, personalAddress } from "../../config";
-import { transferToken } from "../../service/transferERC20";
+import { transferFromToken } from "../../service/transferERC20";
 import { BasicInput, InputWrapper } from "../../styles/Input";
 import { Section } from "../../styles/Section";
 import { Title } from "../../styles/Title";
 
-const TransferToken = () => {
+const TransferFromToken = () => {
   const contractRef = useRef<HTMLInputElement | null>(null);
-  const addressRef = useRef<HTMLInputElement | null>(null);
+  const fromAddressRef = useRef<HTMLInputElement | null>(null);
+  const toAddressRef = useRef<HTMLInputElement | null>(null);
   const amountRef = useRef<HTMLInputElement | null>(null);
   const [isSuccess, setIsSuccess] = useState<string>("");
 
-  const transfer = () => {
+  const onClickTransfer = () => {
     if (
       contractRef?.current?.value &&
-      addressRef?.current?.value &&
+      fromAddressRef?.current?.value &&
+      toAddressRef?.current?.value &&
       amountRef?.current?.value
     ) {
       setIsSuccess("...");
-      transferToken(
+      transferFromToken(
         contractRef.current.value,
-        addressRef.current.value,
+        fromAddressRef.current.value,
+        toAddressRef.current.value,
         amountRef.current.value
       ).then((isSuccess) => {
         if (isSuccess) {
@@ -35,7 +38,7 @@ const TransferToken = () => {
   return (
     <>
       <Section>
-        <Title>Transfer Token</Title>
+        <Title>TransferFrom Token</Title>
         <InputWrapper>
           Countract:{" "}
           <BasicInput
@@ -44,14 +47,18 @@ const TransferToken = () => {
           />
         </InputWrapper>
         <InputWrapper>
-          Address:{" "}
-          <BasicInput ref={addressRef} defaultValue={personalAddress.my2} />
+          From Address:{" "}
+          <BasicInput ref={fromAddressRef} defaultValue={personalAddress.my2} />
+        </InputWrapper>
+        <InputWrapper>
+          To Address:{" "}
+          <BasicInput ref={toAddressRef} defaultValue={personalAddress.my} />
         </InputWrapper>
         <InputWrapper>
           Amount: <BasicInput ref={amountRef} defaultValue={"10"} />
         </InputWrapper>
-        <Button onClick={transfer} margin={"5px 0"}>
-          Transfer
+        <Button onClick={onClickTransfer} margin={"5px 0"}>
+          TransferFrom
         </Button>
 
         <div>{isSuccess}</div>
@@ -60,4 +67,4 @@ const TransferToken = () => {
   );
 };
 
-export default TransferToken;
+export default TransferFromToken;

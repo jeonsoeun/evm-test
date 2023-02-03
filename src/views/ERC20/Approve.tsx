@@ -1,25 +1,25 @@
 import { useRef, useState } from "react";
 import Button from "../../components/button/Button";
 import { contractAddress, personalAddress } from "../../config";
-import { transferToken } from "../../service/transferERC20";
+import { approve } from "../../service/approveERC20";
 import { BasicInput, InputWrapper } from "../../styles/Input";
 import { Section } from "../../styles/Section";
 import { Title } from "../../styles/Title";
 
-const TransferToken = () => {
+const Approve = () => {
   const contractRef = useRef<HTMLInputElement | null>(null);
   const addressRef = useRef<HTMLInputElement | null>(null);
   const amountRef = useRef<HTMLInputElement | null>(null);
   const [isSuccess, setIsSuccess] = useState<string>("");
 
-  const transfer = () => {
+  const onClickApprove = () => {
     if (
       contractRef?.current?.value &&
       addressRef?.current?.value &&
       amountRef?.current?.value
     ) {
       setIsSuccess("...");
-      transferToken(
+      approve(
         contractRef.current.value,
         addressRef.current.value,
         amountRef.current.value
@@ -35,7 +35,7 @@ const TransferToken = () => {
   return (
     <>
       <Section>
-        <Title>Transfer Token</Title>
+        <Title>Approve Token</Title>
         <InputWrapper>
           Countract:{" "}
           <BasicInput
@@ -44,20 +44,19 @@ const TransferToken = () => {
           />
         </InputWrapper>
         <InputWrapper>
-          Address:{" "}
+          Spender Address:{" "}
           <BasicInput ref={addressRef} defaultValue={personalAddress.my2} />
         </InputWrapper>
         <InputWrapper>
-          Amount: <BasicInput ref={amountRef} defaultValue={"10"} />
+          Amount: <BasicInput ref={amountRef} defaultValue={"1000"} />
         </InputWrapper>
-        <Button onClick={transfer} margin={"5px 0"}>
-          Transfer
+        <Button onClick={onClickApprove} margin={"5px 0"}>
+          Approve
         </Button>
-
         <div>{isSuccess}</div>
       </Section>
     </>
   );
 };
 
-export default TransferToken;
+export default Approve;

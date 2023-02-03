@@ -18,9 +18,9 @@ const GetERC20Data = () => {
   const addressRef = useRef<HTMLInputElement | null>(null);
   const [name, setname] = useState<string>("");
   const [symbol, setsymbol] = useState<string>("");
-  const [decimals, setdecimals] = useState<number | undefined>();
-  const [totalSupply, settotalSupply] = useState<number | undefined>();
-  const [balanceOf, setbalanceOf] = useState<number | undefined>();
+  const [decimals, setdecimals] = useState<string | undefined>();
+  const [totalSupply, settotalSupply] = useState<string | undefined>();
+  const [balanceOf, setbalanceOf] = useState<string | undefined>();
   const getErc20Data = () => {
     if (inputRef?.current?.value) {
       getName(inputRef.current.value).then((value) => setname(value));
