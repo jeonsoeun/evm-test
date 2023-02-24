@@ -77,7 +77,7 @@ export async function transferFromToken(
         toAddress,
         amountBN.toFixed(0, BigNumber.ROUND_DOWN)
       )
-      .estimateGas({ from: fromAddress });
+      .estimateGas({ from: personalAddress.my2 });
   } catch (err) {
     console.error("Estimate Error: ", err);
     return false;
