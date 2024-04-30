@@ -52,7 +52,7 @@ export async function getAllowence(
   ownerAddress: string,
   spenderAddress: string
 ) {
-  const web3 = new Web3(config.httpProvider);
+  const web3 = new Web3(config.httpProviderBaobab);
   const abi: any = ABI;
   const contract = new web3.eth.Contract(abi, contractAddress);
   const decimal = await getDecimal(contractAddress);
